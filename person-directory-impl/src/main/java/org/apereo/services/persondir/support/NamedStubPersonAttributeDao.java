@@ -47,9 +47,10 @@ public class NamedStubPersonAttributeDao extends StubPersonAttributeDao {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
-    public final Set<IPersonAttributes> getPeopleWithMultivaluedAttributes(final Map<String, List<Object>> query,
-                                                                           final IPersonAttributeDaoFilter filter,
-                                                                           final Set<IPersonAttributes> resultPeople) {
+    public synchronized final Set<IPersonAttributes> getPeopleWithMultivaluedAttributes(
+		    final Map<String, List<Object>> query,
+                    final IPersonAttributeDaoFilter filter,
+                    final Set<IPersonAttributes> resultPeople) {
 
         final List<?> list = query.get("username");
         final Map m = new HashMap(this.getBackingMap());
